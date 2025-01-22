@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdministradorTareas.MVVM.Views.MemberView"
+             Title="Member">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="LightCyan">
+            <!-- Información del miembro -->
+            <Frame BackgroundColor="LightBlue" CornerRadius="10" Padding="20">
+                <VerticalStackLayout Spacing="10">
+                    <Image Source="{Binding Member.Image}" 
+                           HeightRequest="150" 
+                           Aspect="AspectFit" 
+                           HorizontalOptions="Center"/>
+                    <Label Text="{Binding Member.Name}" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"/>
+                    <Label Text="{Binding Member.Surname}" 
+                           FontSize="18" 
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Lista de tareas asignadas -->
+            <Frame BackgroundColor="LightGreen" CornerRadius="10" Padding="20">
+                <CollectionView ItemsSource="{Binding AssignedTasks}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="5,5,5,5"
+                                  ColumnDefinitions=".2*,.6*,.2*"
+                                  RowDefinitions="Auto">
+                                <!-- Imagen de la tarea -->
+                                <Image Grid.Column="0"
+                                       Source="{Binding Image}"
+                                       HeightRequest="40"
+                                       WidthRequest="40"/>
+                                <!-- Nombre de la tarea -->
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       VerticalOptions="Center"
+                                       FontSize="16"/>
+                                <!-- Estado de la tarea -->
+                                <CheckBox Grid.Column="2"
+                                          IsChecked="{Binding Assigned}"
+                                          VerticalOptions="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+
+            <HorizontalStackLayout HorizontalOptions="Center" >
+                <Button Text="Edit Member"
+                    BackgroundColor="Orange"
+                    TextColor="White"
+                    CornerRadius="5"
+                    Command="{Binding EditMemberCommand}"/>
+                <Button Text="Assign task"
+                    BackgroundColor="Orange"
+                    TextColor="White"
+                    CornerRadius="5"
+                    Command="{Binding  AssignTaskCommand}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

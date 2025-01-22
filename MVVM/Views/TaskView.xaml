@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdministradorTareas.MVVM.Views.TaskView"
+             Title="Task">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" BackgroundColor="LightCyan">
+            <Frame BackgroundColor="LightBlue" CornerRadius="10" Padding="20">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding Task.Name}" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"/>
+                    <BoxView HeightRequest="2" 
+                             Color="DarkBlue" 
+                             HorizontalOptions="Fill"/>
+                    <Label Text="{Binding Task.Description}" 
+                           FontSize="18" 
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="LightGreen" CornerRadius="10" Padding="20">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto" ColumnSpacing="10">
+                    <Label Text="Assigned to:" 
+                           Grid.Column="0" 
+                           Grid.Row="0" 
+                           FontAttributes="Bold"/>
+                    <Label Text="{Binding Task.AssignedMember}" 
+                           Grid.Column="1" 
+                           Grid.Row="0"/>
+                </Grid>
+            </Frame>
+
+            <Image Source="{Binding Task.Image}" 
+                   HeightRequest="200" 
+                   Aspect="AspectFit" 
+                   HorizontalOptions="Center"/>
+
+            <Button Text="Edit Task" 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Orange" 
+                    TextColor="White" 
+                    CornerRadius="5"
+                    Command="{Binding EditTaskCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
