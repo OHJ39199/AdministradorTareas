@@ -11,6 +11,7 @@ It will allow you to *add, delete, order and modify* tasks and family members.
 ## Features
 - includes a series of buttons for different purposses.
 - you can **add** new tasks.
-- **order** all task depending the importance.
+- **order** all task depending the importance given to the task.
 - **deleted** the tasks not assigned.
-- **assign** a task to a family member. 
+- **assign** a task to a family member.
+- **modify** the members and the tasks.
